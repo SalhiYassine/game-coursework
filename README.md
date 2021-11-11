@@ -1,1 +1,2 @@
-# unity-game-template
+# Unity Game Coursework
+
