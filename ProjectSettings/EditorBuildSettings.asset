@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Levels/Level1.unity
     guid: e904c60e569d4a342a74d587cba68c8b
   - enabled: 1
+    path: Assets/Levels/Level2 - Alt.unity
+    guid: fbb4336444c7bad46b2e65775a4899d1
+  - enabled: 1
     path: Assets/Levels/Level2.unity
-    guid: 91903b6874c8c794e92fafc8a7d81c35
+    guid: cc201442c79261b4f9eb304face0bdc7
   - enabled: 1
     path: Assets/Levels/Level3.unity
     guid: 635aa6ec4bb77d94db30dd9ae56640e4
