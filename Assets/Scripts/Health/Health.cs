@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class Health : MonoBehaviour
 {
@@ -18,8 +20,13 @@ public class Health : MonoBehaviour
     [SerializeField] private Behaviour[] components;
     private bool invulnerable;
 
+    public AudioClip playerHurt;
+    AudioSource playerAS;
+    public AudioClip playerDied;
+
     private void Awake()
     {
+        playerAS = GetComponent<AudioSource>();
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
@@ -33,6 +40,9 @@ public class Health : MonoBehaviour
         {
             anim.SetTrigger("hurt");
             StartCoroutine(Invunerability());
+            playerAS.clip = playerHurt;
+            playerAS.Play();
+            playerAS.PlayOneShot(playerHurt);
         }
         else
         {
@@ -40,11 +50,13 @@ public class Health : MonoBehaviour
             {
                 anim.SetTrigger("die");
 
+
                 //Deactivate all attached component classes
                 foreach (Behaviour component in components)
                     component.enabled = false;
 
                 dead = true;
+
             }
         }
     }
@@ -69,5 +81,12 @@ public class Health : MonoBehaviour
     private void Deactivate()
     {
         gameObject.SetActive(false);
+    }
+    private void GameOver()
+    {
+        playerAS.clip = playerHurt;
+        playerAS.Play();
+        playerAS.PlayOneShot(playerDied);
+        SceneManager.LoadScene("Game Over");
     }
 }
